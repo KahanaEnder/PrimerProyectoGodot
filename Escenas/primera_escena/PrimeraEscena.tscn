@@ -3,10 +3,10 @@
 [ext_resource type="Texture2D" uid="uid://c1tp7pqe622b5" path="res://icon.svg" id="1_s1lsk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_npnw7"]
-size = Vector2(122, 121)
+size = Vector2(130, 128)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_apkar"]
-size = Vector2(119, 123)
+size = Vector2(131, 129)
 
 [node name="Escena2D" type="Node2D" unique_id=140253684]
 
