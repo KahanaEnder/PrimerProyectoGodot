@@ -1,11 +1,14 @@
 [gd_scene format=3 uid="uid://duwe2tngv1nck"]
 
+[ext_resource type="Script" uid="uid://d2n8enecxq8pj" path="res://personaje/personaje.gd" id="1_diry1"]
 [ext_resource type="SpriteFrames" uid="uid://dpx5r75o5ghea" path="res://personaje/personaje_sprite_frames.tres" id="1_rqmaa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_npnw7"]
 size = Vector2(11, 14)
 
-[node name="Personaje" type="CharacterBody2D" unique_id=410704354]
+[node name="Personaje" type="CharacterBody2D" unique_id=410704354 node_paths=PackedStringArray("animacion")]
+script = ExtResource("1_diry1")
+animacion = NodePath("AnimatedSprite2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1967420170]
 position = Vector2(-0.5, 0)
