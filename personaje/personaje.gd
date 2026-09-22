@@ -45,3 +45,4 @@ func funcion_colision_entrante_area2d_conectada(_body: Node2D) -> void:
 	animacion.stop()
 	await get_tree().create_timer(0.5).timeout
 	personaje_muerto.emit()
+	ControladorGlobal.sumar_muerte()

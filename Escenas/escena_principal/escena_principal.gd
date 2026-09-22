@@ -24,3 +24,8 @@ func _eliminar_nivel():
 func _reiniciar_nivel():
 	_eliminar_nivel()
 	_crear_nivel.call_deferred(_nivel_actual)
+	
+func siguiente_nivel():
+	_nivel_actual += 1
+	_eliminar_nivel()
+	_crear_nivel.call_deferred(_nivel_actual)

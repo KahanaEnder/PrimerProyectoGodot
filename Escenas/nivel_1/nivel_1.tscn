@@ -2,7 +2,10 @@
 
 [ext_resource type="TileSet" uid="uid://bq7inm8lrcyrj" path="res://tile_sets/mazmorra.tres" id="1_wujsc"]
 [ext_resource type="PackedScene" uid="uid://bl60uqgb0rxoi" path="res://Escenas/bordes/bordes.tscn" id="2_w02sk"]
+[ext_resource type="PackedScene" uid="uid://rg1de0k3jl5" path="res://Escenas/trampa/trampa.tscn" id="3_4f3do"]
 [ext_resource type="PackedScene" uid="uid://duwe2tngv1nck" path="res://personaje/personaje.tscn" id="3_h0ibw"]
+[ext_resource type="PackedScene" uid="uid://dppwubv7s0jfm" path="res://Escenas/moneda/moneda.tscn" id="4_jfjvu"]
+[ext_resource type="PackedScene" uid="uid://cv4scdkr740qd" path="res://Escenas/contenedor_monedas/contenedor_monedas.tscn" id="4_oacnx"]
 
 [node name="Nivel1" type="Node2D" unique_id=2048130785]
 
@@ -16,6 +19,20 @@ tile_map_data = PackedByteArray("AAD2/wYAAAAAAAAAAAD2/wUAAAAAAAAAAAD4/wUAAAAAAAA
 tile_set = ExtResource("1_wujsc")
 
 [node name="Bordes" parent="." unique_id=87841757 instance=ExtResource("2_w02sk")]
+
+[node name="Trampa" parent="." unique_id=899020077 instance=ExtResource("3_4f3do")]
+position = Vector2(120, -8)
+
+[node name="ContenedorMonedas" parent="." unique_id=1233200057 instance=ExtResource("4_oacnx")]
+
+[node name="Moneda" parent="ContenedorMonedas" unique_id=435630055 instance=ExtResource("4_jfjvu")]
+position = Vector2(-72, 48)
+
+[node name="Moneda2" parent="ContenedorMonedas" unique_id=527713998 instance=ExtResource("4_jfjvu")]
+position = Vector2(40, 48)
+
+[node name="Moneda3" parent="ContenedorMonedas" unique_id=1412729512 instance=ExtResource("4_jfjvu")]
+position = Vector2(120, -32)
 
 [node name="Personaje" parent="." unique_id=410704354 instance=ExtResource("3_h0ibw")]
 position = Vector2(-192, 105)
