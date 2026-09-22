@@ -12,7 +12,7 @@ offset_bottom = -648.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_fn2rs")
-label = NodePath("ColorRect/HBoxContainer/Titulo")
+label = NodePath("ColorRect/HBoxContainer/Valor")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=773659879]
 layout_mode = 1
@@ -46,6 +46,9 @@ theme_override_constants/separation = 4
 
 [node name="Titulo" type="Label" parent="ColorRect/HBoxContainer" unique_id=633917889]
 layout_mode = 2
+tooltip_text = "el que se pare aqui es gay"
+mouse_filter = 1
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 text = "Muertes:"
 
 [node name="Valor" type="Label" parent="ColorRect/HBoxContainer" unique_id=1889108920]
