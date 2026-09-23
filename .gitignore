@@ -2,7 +2,7 @@
 .vscode/
 .godot/
 /android/
-
+/builds/
 # opencode local config (machine-specific paths)
 opencode.json
 opencode.jsonc
