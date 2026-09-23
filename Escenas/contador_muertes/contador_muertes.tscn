@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://6searks5uov7"]
 
 [ext_resource type="Script" uid="uid://cnyhvf2sueiqs" path="res://Escenas/contador_muertes/contador_muertes.gd" id="1_fn2rs"]
+[ext_resource type="Theme" uid="uid://dwe4ec4pfgkqc" path="res://themes/interfaz_ingame.tres" id="2_c506v"]
 
 [node name="ContadorMuertes" type="Control" unique_id=986241939 node_paths=PackedStringArray("label")]
 layout_mode = 3
@@ -46,11 +47,12 @@ theme_override_constants/separation = 4
 
 [node name="Titulo" type="Label" parent="ColorRect/HBoxContainer" unique_id=633917889]
 layout_mode = 2
-tooltip_text = "el que se pare aqui es gay"
 mouse_filter = 1
+theme = ExtResource("2_c506v")
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 text = "Muertes:"
 
 [node name="Valor" type="Label" parent="ColorRect/HBoxContainer" unique_id=1889108920]
 layout_mode = 2
+theme = ExtResource("2_c506v")
 text = "0"
