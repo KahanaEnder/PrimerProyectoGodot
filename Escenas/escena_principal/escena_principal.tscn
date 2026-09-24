@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://b2jpyk6v3ceap" path="res://Escenas/nivel_1/nivel_1.tscn" id="2_m20ff"]
 [ext_resource type="PackedScene" uid="uid://bb25tlj8jh5i5" path="res://Escenas/nivel_2/nivel_2.tscn" id="3_1ccjb"]
 [ext_resource type="PackedScene" uid="uid://bjwxklo3qlvmg" path="res://Escenas/escena_final/escena_final.tscn" id="4_opvmk"]
+[ext_resource type="PackedScene" path="res://Escenas/nivel_3/nivel_3.tscn" id="7_nivel3"]
 [ext_resource type="AudioStream" uid="uid://csyoql15iygaw" path="res://assets/musica/musica.wav" id="5_p5hqc"]
 [ext_resource type="PackedScene" uid="uid://dxyhc3bhyllll" path="res://Escenas/controlador_partida/controlador_partida.tscn" id="6_2cbot"]
 [ext_resource type="PackedScene" uid="uid://6searks5uov7" path="res://Escenas/contador_muertes/contador_muertes.tscn" id="6_dc0xd"]
@@ -11,7 +12,7 @@
 
 [node name="EscenaPrincipal" type="Node2D" unique_id=734100259 node_paths=PackedStringArray("controlador_partida")]
 script = ExtResource("1_d4by0")
-niveles = Array[PackedScene]([ExtResource("2_m20ff"), ExtResource("3_1ccjb"), ExtResource("4_opvmk")])
+niveles = Array[PackedScene]([ExtResource("2_m20ff"), ExtResource("3_1ccjb"), ExtResource("7_nivel3"), ExtResource("4_opvmk")])
 controlador_partida = NodePath("ControladorPartida")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1893772706]

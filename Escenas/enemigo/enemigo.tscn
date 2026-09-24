@@ -1,0 +1,45 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://Escenas/enemigo/enemigo.gd" id="1_en"]
+[ext_resource type="Texture2D" uid="uid://47o35pl1b7ou" path="res://assets/sprites/tileset_mazmorra.png" id="2_en"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_en"]
+atlas = ExtResource("2_en")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cuerpo"]
+size = Vector2(12, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dano"]
+size = Vector2(10, 4)
+
+[node name="Enemigo" type="CharacterBody2D" node_paths=PackedStringArray("rayo_pared", "rayo_borde", "sprite")]
+collision_layer = 0
+collision_mask = 1
+script = ExtResource("1_en")
+rayo_pared = NodePath("RayoPared")
+rayo_borde = NodePath("RayoBorde")
+sprite = NodePath("Sprite2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_cuerpo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_en")
+
+[node name="RayoPared" type="RayCast2D" parent="."]
+collision_mask = 1
+target_position = Vector2(-10, 0)
+
+[node name="RayoBorde" type="RayCast2D" parent="."]
+position = Vector2(8, 0)
+collision_mask = 1
+target_position = Vector2(0, 24)
+
+[node name="Dano" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Dano"]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_dano")

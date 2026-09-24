@@ -1,0 +1,21 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" uid="uid://47o35pl1b7ou" path="res://assets/sprites/tileset_mazmorra.png" id="1_pin"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pin"]
+atlas = ExtResource("1_pin")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pin"]
+size = Vector2(14, 5)
+
+[node name="Pinchos" type="StaticBody2D"]
+collision_layer = 2
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_pin")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -5.5)
+shape = SubResource("RectangleShape2D_pin")
