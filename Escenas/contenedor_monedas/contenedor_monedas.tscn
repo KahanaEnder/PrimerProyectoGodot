@@ -1,6 +1,12 @@
 [gd_scene format=3 uid="uid://cv4scdkr740qd"]
 
 [ext_resource type="Script" uid="uid://cws3r4s03x1g3" path="res://Escenas/contenedor_monedas/contenedor_monedas.gd" id="1_xlhly"]
+[ext_resource type="AudioStream" uid="uid://c31k8lrprp1m7" path="res://assets/sonidos/sonido_moneda.wav" id="2_xlhly"]
 
-[node name="ContenedorMonedas" type="Node" unique_id=1233200057]
+[node name="ContenedorMonedas" type="Node" unique_id=1233200057 node_paths=PackedStringArray("reproductor")]
 script = ExtResource("1_xlhly")
+reproductor = NodePath("Reproductor")
+
+[node name="Reproductor" type="AudioStreamPlayer2D" parent="." unique_id=700160774]
+stream = ExtResource("2_xlhly")
+bus = &"SFX"

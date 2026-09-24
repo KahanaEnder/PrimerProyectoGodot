@@ -13,3 +13,8 @@ func cargar_partida():
 		partida = load(_ruta)
 		ControladorGlobal.nivel = partida.nivel
 		ControladorGlobal.muertes = partida.muertes
+
+func reiniciar_partida():
+	ControladorGlobal.nivel = 0
+	ControladorGlobal.muertes = 0
+	guardar_partida()

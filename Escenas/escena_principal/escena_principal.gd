@@ -16,13 +16,27 @@ func _crear_nivel(numero_nivel: int)  -> void:
 	_nivel_instanciado = niveles[numero_nivel].instantiate()
 	add_child(_nivel_instanciado)
 	
-	var hijos := _nivel_instanciado.get_children()
-	for i in hijos.size():
-		if hijos[i].is_in_group("personajes"):
-			hijos[i].personaje_muerto.connect(_reiniciar_nivel)
-			break
+	var personaje := _buscar_en_grupo(_nivel_instanciado, "personajes")
+	if personaje != null and personaje.has_signal("personaje_muerto"):
+		personaje.connect("personaje_muerto", _reiniciar_nivel)
+	var contenedor := _buscar_en_grupo(_nivel_instanciado, "contenedor_monedas")
+	if contenedor != null and contenedor.has_signal("completado"):
+		contenedor.connect("completado", siguiente_nivel)
 	ControladorGlobal.nivel = numero_nivel
 	controlador_partida.guardar_partida()
+
+func _buscar_en_grupo(root: Node, grupo: String) -> Node:
+	if root.is_in_group(grupo):
+		return root
+	for hijo in root.get_children():
+		var encontrado := _buscar_en_grupo(hijo, grupo)
+		if encontrado != null:
+			return encontrado
+	return null
+
+func salir_al_menu() -> void:
+	get_tree().change_scene_to_file("res://Escenas/menu_principal/menu_principal.tscn")
+
 func _eliminar_nivel():
 	_nivel_instanciado.queue_free()
 	

@@ -1,6 +1,13 @@
 [gd_scene format=3 uid="uid://bjwxklo3qlvmg"]
 
-[node name="EscenaFinal" type="Node2D" unique_id=1288263915]
+[ext_resource type="Script" uid="uid://dngttbtumvl80" path="res://Escenas/escena_final/escena_final.gd" id="1_efsc"]
+[ext_resource type="PackedScene" uid="uid://dxyhc3bhyllll" path="res://Escenas/controlador_partida/controlador_partida.tscn" id="2_efsc"]
+
+[node name="EscenaFinal" type="Node2D" unique_id=1288263915 node_paths=PackedStringArray("controlador_partida")]
+script = ExtResource("1_efsc")
+controlador_partida = NodePath("ControladorPartida")
+
+[node name="ControladorPartida" parent="." unique_id=788248950 instance=ExtResource("2_efsc")]
 
 [node name="Label" type="Label" parent="." unique_id=875452558]
 anchors_preset = 8

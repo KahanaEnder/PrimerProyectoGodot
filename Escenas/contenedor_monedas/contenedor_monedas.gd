@@ -1,18 +1,23 @@
 class_name ContenedorMonedas
 extends Node
 
+signal completado
+
+@export var reproductor: AudioStreamPlayer2D
+
 var _total_monedas: int
 var _monedas_recogidas: int
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	var monedas := get_children()
-	_total_monedas = monedas.size()
-	
-	for moneda in monedas:
-		moneda.contenedor_monedas = self
+	add_to_group("contenedor_monedas")
+	for hijo in get_children():
+		if hijo.is_in_group("monedas"):
+			_total_monedas += 1
+			hijo.recogida.connect(_moneda_recogida.bind(hijo))
 
-func moneda_recogida():
+func _moneda_recogida(moneda: Node2D) -> void:
 	_monedas_recogidas += 1
+	reproductor.global_position = moneda.global_position
+	reproductor.play()
 	if _monedas_recogidas == _total_monedas:
-		get_parent().get_parent().siguiente_nivel()		
+		completado.emit()		
