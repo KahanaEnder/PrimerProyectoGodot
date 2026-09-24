@@ -34,13 +34,21 @@ func _ready() -> void:
 	if panel == null:
 		fallos.append("panel_pausa no conectado")
 	else:
-		panel._pausar()
+		if panel.process_mode != Node.PROCESS_MODE_ALWAYS:
+			fallos.append("panel_pausa no está en PROCESS_MODE_ALWAYS (%s)" % panel.process_mode)
+		await _pulsar_p()
 		if not get_tree().paused:
-			fallos.append("pausar no activó get_tree().paused")
+			fallos.append("tecla pausa no activó la pausa")
 		if not panel._vista.visible:
 			fallos.append("vista del panel no visible al pausar")
+		if not panel._continuar.can_process():
+			fallos.append("botón no procesa estando en pausa")
+		await _pulsar_p()
+		if get_tree().paused:
+			fallos.append("tecla pausa no despausó")
 		var nivel_anterior: Node = escena._nivel_instanciado
-		panel._al_reiniciar()
+		panel._pausar()
+		panel._reiniciar.pressed.emit()
 		if get_tree().paused:
 			fallos.append("reiniciar no desactivó la pausa")
 		await get_tree().process_frame
@@ -48,11 +56,11 @@ func _ready() -> void:
 		if escena._nivel_instanciado == nivel_anterior:
 			fallos.append("reiniciar desde pausa no recreó el nivel")
 		panel._pausar()
-		panel._reanudar()
+		panel._continuar.pressed.emit()
 		if get_tree().paused:
-			fallos.append("reanudar no desactivó la pausa")
+			fallos.append("continuar no desactivó la pausa")
 		if panel._vista.visible:
-			fallos.append("vista del panel visible tras reanudar")
+			fallos.append("vista del panel visible tras continuar")
 
 	# --- Escena final: estadísticas + reset ---
 	escena.queue_free()
@@ -73,6 +81,18 @@ func _ready() -> void:
 	await get_tree().process_frame
 	await get_tree().process_frame
 	_finalizar(fallos)
+
+func _pulsar_p() -> void:
+	var ev := InputEventKey.new()
+	ev.physical_keycode = KEY_P
+	ev.pressed = true
+	Input.parse_input_event(ev)
+	await get_tree().process_frame
+	var evr := InputEventKey.new()
+	evr.physical_keycode = KEY_P
+	evr.pressed = false
+	Input.parse_input_event(evr)
+	await get_tree().process_frame
 
 func _finalizar(fallos: Array[String]) -> void:
 	if fallos.is_empty():

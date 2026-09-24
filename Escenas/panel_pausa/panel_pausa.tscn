@@ -8,7 +8,9 @@
 [ext_resource type="StyleBox" uid="uid://kuqv1y16fk35" path="res://themes/hover.tres" id="6_pausa"]
 [ext_resource type="StyleBox" uid="uid://b41cdd04ptpiu" path="res://themes/focus.tres" id="7_pausa"]
 
-[node name="PanelPausa" type="CanvasLayer" process_mode = 3 layer = 10]
+[node name="PanelPausa" type="CanvasLayer"]
+process_mode = 3
+layer = 10
 script = ExtResource("1_pausa")
 
 [node name="Vista" type="Control" parent="."]
