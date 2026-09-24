@@ -32,7 +32,7 @@ position = Vector2(-72, 48)
 position = Vector2(40, 48)
 
 [node name="Moneda3" parent="ContenedorMonedas" unique_id=1412729512 instance=ExtResource("4_jfjvu")]
-position = Vector2(120, -32)
+position = Vector2(184, 72)
 
 [node name="Personaje" parent="." unique_id=410704354 instance=ExtResource("3_h0ibw")]
 position = Vector2(-192, 105)

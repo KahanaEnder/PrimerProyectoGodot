@@ -27,7 +27,7 @@ position = Vector2(192, 104)
 position = Vector2(104, 32)
 
 [node name="Moneda2" parent="ContenedorMonedas" unique_id=713833396 instance=ExtResource("6_tbcbp")]
-position = Vector2(-8, 96)
+position = Vector2(-8, -40)
 
 [node name="Moneda3" parent="ContenedorMonedas" unique_id=112177289 instance=ExtResource("6_tbcbp")]
 position = Vector2(-104, 32)

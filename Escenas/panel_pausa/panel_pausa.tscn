@@ -1,0 +1,75 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://Escenas/panel_pausa/panel_pausa.gd" id="1_pausa"]
+[ext_resource type="Theme" uid="uid://dwe4ec4pfgkqc" path="res://themes/interfaz_ingame.tres" id="2_pausa"]
+[ext_resource type="Theme" uid="uid://urxme21xdcpp" path="res://themes/boton_menu_principal.tres" id="3_pausa"]
+[ext_resource type="StyleBox" uid="uid://b44ti6x6m2v6q" path="res://themes/normal.tres" id="4_pausa"]
+[ext_resource type="StyleBox" uid="uid://bt1ms66pvq61m" path="res://themes/pressed.tres" id="5_pausa"]
+[ext_resource type="StyleBox" uid="uid://kuqv1y16fk35" path="res://themes/hover.tres" id="6_pausa"]
+[ext_resource type="StyleBox" uid="uid://b41cdd04ptpiu" path="res://themes/focus.tres" id="7_pausa"]
+
+[node name="PanelPausa" type="CanvasLayer" process_mode = 3 layer = 10]
+script = ExtResource("1_pausa")
+
+[node name="Vista" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Fondo" type="ColorRect" parent="Vista"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.65)
+
+[node name="Centro" type="CenterContainer" parent="Vista"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBox" type="VBoxContainer" parent="Vista/Centro"]
+layout_mode = 2
+theme = ExtResource("2_pausa")
+theme_override_constants/separation = 20
+
+[node name="Titulo" type="Label" parent="Vista/Centro/VBox"]
+layout_mode = 2
+horizontal_alignment = 1
+text = "PAUSA"
+theme_override_font_sizes/font_size = 32
+
+[node name="Continuar" type="Button" parent="Vista/Centro/VBox"]
+layout_mode = 2
+theme = ExtResource("3_pausa")
+theme_override_styles/normal = ExtResource("4_pausa")
+theme_override_styles/pressed = ExtResource("5_pausa")
+theme_override_styles/hover = ExtResource("6_pausa")
+theme_override_styles/focus = ExtResource("7_pausa")
+text = "Continuar"
+
+[node name="ReiniciarNivel" type="Button" parent="Vista/Centro/VBox"]
+layout_mode = 2
+theme = ExtResource("3_pausa")
+theme_override_styles/normal = ExtResource("4_pausa")
+theme_override_styles/pressed = ExtResource("5_pausa")
+theme_override_styles/hover = ExtResource("6_pausa")
+theme_override_styles/focus = ExtResource("7_pausa")
+text = "Reiniciar nivel"
+
+[node name="VolverAlMenu" type="Button" parent="Vista/Centro/VBox"]
+layout_mode = 2
+theme = ExtResource("3_pausa")
+theme_override_styles/normal = ExtResource("4_pausa")
+theme_override_styles/pressed = ExtResource("5_pausa")
+theme_override_styles/hover = ExtResource("6_pausa")
+theme_override_styles/focus = ExtResource("7_pausa")
+text = "Volver al menú"

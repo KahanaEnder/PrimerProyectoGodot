@@ -2,6 +2,7 @@ class_name ContenedorMonedas
 extends Node
 
 signal completado
+signal progreso(recogidas: int, total: int)
 
 @export var reproductor: AudioStreamPlayer2D
 
@@ -19,5 +20,9 @@ func _moneda_recogida(moneda: Node2D) -> void:
 	_monedas_recogidas += 1
 	reproductor.global_position = moneda.global_position
 	reproductor.play()
+	progreso.emit(_monedas_recogidas, _total_monedas)
 	if _monedas_recogidas == _total_monedas:
-		completado.emit()		
+		completado.emit()
+
+func total_monedas() -> int:
+	return _total_monedas		

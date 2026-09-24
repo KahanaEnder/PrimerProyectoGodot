@@ -1,0 +1,25 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://Escenas/hud_monedas/hud_monedas.gd" id="1_hud"]
+[ext_resource type="Theme" uid="uid://dwe4ec4pfgkqc" path="res://themes/interfaz_ingame.tres" id="2_hud"]
+
+[node name="HudMonedas" type="Control" node_paths=PackedStringArray("label")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_hud")
+label = NodePath("Label")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+offset_left = 16.0
+offset_top = 56.0
+offset_right = 232.0
+offset_bottom = 88.0
+theme = ExtResource("2_hud")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "Monedas: 0/0"

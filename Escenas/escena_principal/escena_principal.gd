@@ -2,10 +2,15 @@ extends Node2D
 
 @export var niveles: Array[PackedScene]
 @export var controlador_partida: ControladorPartida
+@export var hud_monedas: HudMonedas
+@export var panel_pausa: PanelPausa
 var _nivel_actual: int = 0
 var _nivel_instanciado: Node
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	if panel_pausa != null:
+		panel_pausa.reiniciar_solicitado.connect(reiniciar_nivel)
+		panel_pausa.salir_solicitado.connect(salir_al_menu)
 	if ControladorGlobal.nivel > 1:
 		_cargar_nivel()
 	else:
@@ -22,6 +27,13 @@ func _crear_nivel(numero_nivel: int)  -> void:
 	var contenedor := _buscar_en_grupo(_nivel_instanciado, "contenedor_monedas")
 	if contenedor != null and contenedor.has_signal("completado"):
 		contenedor.connect("completado", siguiente_nivel)
+	if hud_monedas != null:
+		if contenedor != null and contenedor.has_signal("progreso"):
+			contenedor.connect("progreso", hud_monedas.actualizar)
+			hud_monedas.iniciar(contenedor.total_monedas())
+			hud_monedas.visible = true
+		else:
+			hud_monedas.visible = false
 	ControladorGlobal.nivel = numero_nivel
 	controlador_partida.guardar_partida()
 
@@ -36,6 +48,9 @@ func _buscar_en_grupo(root: Node, grupo: String) -> Node:
 
 func salir_al_menu() -> void:
 	get_tree().change_scene_to_file("res://Escenas/menu_principal/menu_principal.tscn")
+
+func reiniciar_nivel() -> void:
+	_reiniciar_nivel()
 
 func _eliminar_nivel():
 	_nivel_instanciado.queue_free()

@@ -5,6 +5,8 @@ signal personaje_muerto
 @export var animacion: AnimatedSprite2D
 @export var area_2d: Area2D
 @export var material_personaje_rojo: ShaderMaterial
+@export var reproductor_salto: AudioStreamPlayer2D
+@export var reproductor_muerte: AudioStreamPlayer2D
 
 const _VELOCIDAD_MAXIMA: float = 120.0
 const _ACELERACION: float = 1400.0
@@ -43,6 +45,8 @@ func _physics_process(delta: float) -> void:
 		_buffer = 0.0
 		_coyote = 0.0
 		_reproducir_squash_y_estiramiento(true)
+		if reproductor_salto != null:
+			reproductor_salto.play()
 
 	if Input.is_action_just_released("saltar") and velocity.y < 0.0:
 		velocity.y *= _CORTE_SALTO
@@ -74,8 +78,12 @@ func _reproducir_squash_y_estiramiento(salto: bool) -> void:
 	tween.tween_property(animacion, "scale", Vector2.ONE, 0.16).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 
 func funcion_colision_entrante_area2d_conectada(_body: Node2D) -> void:
+	if _muerto:
+		return
 	animacion.material = material_personaje_rojo
 	_muerto = true
+	if reproductor_muerte != null:
+		reproductor_muerte.play()
 	animacion.stop()
 	await get_tree().create_timer(0.5).timeout
 	personaje_muerto.emit()

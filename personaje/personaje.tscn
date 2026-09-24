@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://d2n8enecxq8pj" path="res://personaje/personaje.gd" id="1_diry1"]
 [ext_resource type="SpriteFrames" uid="uid://dpx5r75o5ghea" path="res://personaje/personaje_sprite_frames.tres" id="1_rqmaa"]
 [ext_resource type="Material" uid="uid://bqqv4ph4f0iad" path="res://personaje/material_personaje_rojo.tres" id="2_i8xir"]
+[ext_resource type="AudioStream" uid="uid://cbt6kwm8mwlxg" path="res://assets/sonidos/salto.wav" id="3_salto"]
+[ext_resource type="AudioStream" uid="uid://bff3osrkftnte" path="res://assets/sonidos/muerte.wav" id="4_muerte"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_npnw7"]
 size = Vector2(11, 14)
@@ -10,12 +12,14 @@ size = Vector2(11, 14)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_apkar"]
 size = Vector2(11, 14)
 
-[node name="Personaje" type="CharacterBody2D" unique_id=410704354 node_paths=PackedStringArray("animacion", "area_2d")]
+[node name="Personaje" type="CharacterBody2D" unique_id=410704354 node_paths=PackedStringArray("animacion", "area_2d", "reproductor_salto", "reproductor_muerte")]
 collision_layer = 4
 script = ExtResource("1_diry1")
 animacion = NodePath("Animacion")
 area_2d = NodePath("Area2D")
 material_personaje_rojo = ExtResource("2_i8xir")
+reproductor_salto = NodePath("ReproductorSalto")
+reproductor_muerte = NodePath("ReproductorMuerte")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1967420170]
 position = Vector2(-0.5, 0)
@@ -33,3 +37,11 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1458262705]
 position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_apkar")
+
+[node name="ReproductorSalto" type="AudioStreamPlayer2D" parent="." unique_id=542203418]
+stream = ExtResource("3_salto")
+bus = &"SFX"
+
+[node name="ReproductorMuerte" type="AudioStreamPlayer2D" parent="." unique_id=602100128]
+stream = ExtResource("4_muerte")
+bus = &"SFX"
