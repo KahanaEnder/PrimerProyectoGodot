@@ -16,6 +16,8 @@ controlador_partida = NodePath("ControladorPartida")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1893772706]
 zoom = Vector2(2.58, 2.57)
+position_smoothing_enabled = true
+position_smoothing_speed = 6.0
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=200370267]
 stream = ExtResource("5_p5hqc")
