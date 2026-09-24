@@ -1,20 +1,16 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://dvm3vssaknunn"]
 
-[ext_resource type="Script" path="res://Escenas/hud_monedas/hud_monedas.gd" id="1_hud"]
+[ext_resource type="Script" uid="uid://bwnt7t6vs37u" path="res://Escenas/hud_monedas/hud_monedas.gd" id="1_hud"]
 [ext_resource type="Theme" uid="uid://dwe4ec4pfgkqc" path="res://themes/interfaz_ingame.tres" id="2_hud"]
 
-[node name="HudMonedas" type="Control" node_paths=PackedStringArray("label")]
+[node name="HudMonedas" type="Control" unique_id=2017217118 node_paths=PackedStringArray("label")]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
 mouse_filter = 2
 script = ExtResource("1_hud")
 label = NodePath("Label")
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="." unique_id=1765878387]
 layout_mode = 1
 offset_left = 16.0
 offset_top = 56.0

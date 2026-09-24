@@ -8,7 +8,7 @@ extends CharacterBody2D
 const _VELOCIDAD: float = 45.0
 const _TIEMPO_ESPERA: float = 0.25
 
-@export var alcance: float = 60.0
+@export var alcance: float = 600.0
 
 var _direccion := -1
 var _x_inicial: float
